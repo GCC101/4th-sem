@@ -1,0 +1,39 @@
+class student
+{
+String USN, Name, Branch, Phone;
+student(String U, String N, String B, String P)
+ {
+this.USN = U;
+this.Name = N;
+this.Branch = B;
+this.Phone = P;
+}
+void display()
+{
+System.out.println("\nStudent details");
+System.out.println("USN = "+this.USN);
+System.out.println("Name = "+this.Name);
+System.out.println("Branch = "+this.Branch);
+System.out.println("Phone = "+this.Phone);
+}
+}
+class Prg1a {
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+student s1 = new student("1RN17IS166","Nagraj","ISE","9933");
+student s2 = new student("1RN17IS196","Sindhraj","ISE","7711");
+s1.display();
+s2.display();
+}
+}
+OUTPUT:
+Student details
+USN = 1RN17IS166
+Name = Nagraj
+Branch = ISE
+Phone = 9933
+Student details
+USN = 1RN17IS196
+Name = Sindhraj
+Branch = ISE
+Phone = 7711
