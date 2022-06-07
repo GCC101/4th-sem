@@ -1,0 +1,259 @@
+import java.util.Scanner;
+class staff {
+String name, phone;
+int sid, sal;
+Scanner scan = new Scanner(System.in);
+void read() {
+System.out.println("Staff Id:");
+sid = scan.nextInt();
+System.out.println("Name:");
+name = scan.next();
+System.out.println("Phone:");
+phone = scan.next();
+System.out.println("salary:");
+sal = scan.nextInt();
+scan.nextLine(); //additional dummy scan to flush the buffer contents
+// if this scan.nextLine(), is not used input of string after the
+// integer in the console, the string input is just skipped
+}
+void display() {
+System.out.println("Staff Id:" + sid);
+System.out.println("Name:" + name);
+System.out.println("Phone:" + phone);
+System.out.println("salary:" + sal);
+}
+}
+class teaching extends staff {
+String domain;
+int publication;
+void read() {
+super.read();
+System.out.print("Enter the Domain Expertise:");
+domain = scan.nextLine();
+System.out.print("Enter the No. of publications:");
+publication = scan.nextInt();
+}
+void display() {
+super.display();
+System.out.println("Domain Expert is :" + domain);
+System.out.println("No. of Publications :" + publication);
+}
+}
+class technical extends staff {
+String[] skills;
+void read() {
+super.read();
+System.out.print("Skills (separated by commas):");
+skills = scan.nextLine().split(",");
+}
+void display() {
+super.display();
+System.out.print("Skills:");
+for (int i = 0; i<skills.length; i++) {
+System.out.print(skills[i] + " ");
+}
+System.out.println();
+}
+}
+class contract extends staff {
+int period;
+void read() {
+super.read();
+System.out.print("Enter the Contract period: ");
+period = scan.nextInt();
+}
+void display() {
+super.display();
+System.out.print("Contract Period: " + period);
+}
+}
+class prg2a {
+public static void main(String[] args) {
+teaching teach[] = new teaching[3];
+technical tech[] = new technical[3];
+contract cont[] = new contract[3];
+// read 3 staff objects of all three categories.
+System.out.println("Enter the staff details");
+for (int i = 0; i< 3; i++) {
+System.out.println("\n Enter the details of teaching staff # " + (i + 1));
+teach[i] = new teaching();
+teach[i].read();
+}
+for (int i = 0; i< 3; i++) {
+System.out.println("\n Enter the details of technical staff # " + (i + 1));
+tech[i] = new technical();
+tech[i].read();
+}
+for (int i = 0; i< 3; i++) {
+System.out.println("\n Enter the details of contract staff # " + (i + 1));
+cont[i] = new contract();
+cont[i].read();
+}
+// display 3 staff objects of all three categories.
+System.out.println("\n The details of all three categories of staffs are\n");
+for (int i = 0; i< 3; i++) {
+System.out.println("\n The details of teaching staff # " + (i + 1));
+teach[i].display();
+}
+for (int i = 0; i< 3; i++) {
+System.out.println("\n The details of teaching staff # " + (i + 1));
+tech[i].display();
+}
+for (int i = 0; i< 3; i++) {
+System.out.println("\n The details of teaching staff # " + (i + 1));
+cont[i].display();
+}
+}
+}
+Enter the staff details
+Enter the details of teaching staff # 1
+Staff Id:
+1
+Name:
+kumar
+Phone:
+123456789
+salary:
+12000
+Enter the Domain Expertise:Computer Networks
+Enter the No. of publications:12
+Enter the details of teaching staff # 2
+Staff Id:
+1
+Name:
+Madhu
+Phone:
+9876543210
+salary:
+25000
+Enter the Domain Expertise:Image Processing
+Enter the No. of publications:10
+Enter the details of teaching staff # 3
+Staff Id:
+3
+Name:
+Ashwini
+Phone:
+1234567789
+salary:
+20000
+Enter the Domain Expertise:Sensor Networks
+Enter the No. of publications:3
+Enter the details of technical staff # 1
+Staff Id:
+1
+Name:
+usha
+Phone:
+123456788
+salary:
+20000
+Skills (separated by commas):C,C++
+Enter the details of technical staff # 2
+Staff Id:
+2
+Name:
+Uma
+Phone:
+4343434343
+salary:
+10000
+Skills (separated by commas):java,python
+Enter the details of technical staff # 3
+Staff Id:
+3
+Name:
+Manu
+Phone:
+1212121212
+salary:
+30000
+Skills (separated by commas):Python, R
+Enter the details of contract staff # 1
+Staff Id:
+1
+Name:
+Kushi
+Phone:
+121345666
+salary:
+5000
+Enter the Contract period: 2
+Enter the details of contract staff # 2
+Staff Id:
+2
+Name:
+Shree
+Phone:
+56565674
+salary:
+8000
+Enter the Contract period: 5
+Enter the details of contract staff # 3
+Staff Id:
+3
+Name:
+kavya
+Phone:
+123213422
+salary:
+3000
+Enter the Contract period: 1
+The details of all three categories of staffs are
+The details of teaching staff # 1
+Staff Id:1
+Name:kumar
+Phone:123456789
+salary:12000
+Domain Expert is :Computer Networks
+No. of Publications :12
+The details of teaching staff # 2
+Staff Id:1
+Name:Madhu
+Phone:9876543210
+salary:25000
+Domain Expert is :Image Processing
+No. of Publications :10
+The details of teaching staff # 3
+Staff Id:3
+Name:Ashwini
+Phone:1234567789
+salary:20000
+Domain Expert is :Sensor Networks
+No. of Publications :3
+The details of teaching staff # 1
+Staff Id:1
+Name:usha
+Phone:123456788
+salary:20000
+Skills:C C++ 
+The details of teaching staff # 2
+Staff Id:2
+Name:Uma
+Phone:4343434343
+salary:10000
+Skills:java python 
+The details of teaching staff # 3
+Staff Id:3
+Name:Manu
+Phone:1212121212
+salary:30000
+Skills:Python R 
+The details of teaching staff # 1
+Staff Id:1
+Name:Kushi
+Phone:121345666
+salary:5000
+Contract Period: 2
+The details of teaching staff # 2
+Staff Id:2
+Name:Shree
+Phone:56565674
+salary:8000
+Contract Period: 5
+The details of teaching staff # 3
+Staff Id:3
+Name:kavya
+Phone:123213422
+salary:3000
+Contract Period: 1
