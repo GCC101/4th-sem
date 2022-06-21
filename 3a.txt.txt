@@ -1,0 +1,31 @@
+import java.util.Scanner;
+class prg3a {
+public static void main(String[] args)
+{
+int a,b;
+float res;
+try
+{
+Scanner inn=new Scanner(System.in);
+System.out.println("Input Dividend (a) \n");
+a=inn.nextInt();
+System.out.println("Input Divisor (b) \n");
+b=inn.nextInt();
+res=a/b;
+System.out.println("Quotient is="+res);
+inn.close();
+}
+catch(ArithmeticException e)
+{
+System.out.println("Divide by zero error "+e);
+}
+}
+}
+Output 1:
+Input Dividend (a): 21
+Input Divisor (b): 3
+Quotient is = 7.0
+Output 2:
+Input Dividend (a): 5
+Input Divisor (b): 0
+Divide by zero error java.lang.ArithmeticException: / by zero

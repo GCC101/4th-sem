@@ -1,0 +1,78 @@
+Write a Java program that implements a multi-thread application that has three threads. First thread 
+generates a random integer for every 1 second; second thread computes the square of the number and 
+prints; third thread will print the value of cube of the number.
+import java.util.Random;
+//using Thread Class
+class prg3b{
+static int randomInteger;
+public static void main(String[] args){
+System.out.println("For 10 Random numbers");
+MyThread1 thread1 = new MyThread1();
+thread1.start();//start thread1
+}
+}
+//Thread1
+class MyThread1 extends Thread{
+public void run() {
+int i = 0;
+try {
+//generating 10 random numbers
+while(i<10) {
+Random random = new Random();
+prg3b.randomInteger = random.nextInt(10);
+System.out.println((i+1)+" Random integer is "+prg3b.randomInteger);
+new MyThread2().start();//start thread2
+new MyThread3().start();//start thread3
+Thread.sleep(1000*1);//delay for display of output
+System.out.println("\n");
+i++;
+}
+}
+catch (InterruptedException exception) {
+exception.printStackTrace();
+}
+}
+}
+//Thread2
+class MyThread2 extends Thread {
+public void run() {
+System.out.println("Square of "+prg3b.randomInteger + " is " +prg3b.randomInteger * prg3b.randomInteger );
+}
+}
+//Thread3
+class MyThread3 extends Thread {
+public void run() {
+System.out.println("Cube of "+prg3b.randomInteger + " is " + prg3b.randomInteger * prg3b.randomInteger * 
+prg3b.randomInteger );
+}
+}
+For 10 Random numbers
+1 Random integer is 5
+Cube of 5 is 125
+Square of 5 is 25
+2 Random integer is 7
+Cube of 7 is 343
+Square of 7 is 49
+3 Random integer is 1
+Square of 1 is 1
+Cube of 1 is 1
+4 Random integer is 9
+Square of 9 is 81
+Cube of 9 is 729
+5 Random integer is 3
+Cube of 3 is 27
+Square of 3 is 9
+6 Random integer is 3
+Square of 3 is 9
+Cube of 3 is 27
+7 Random integer is 9
+Square of 9 is 81
+Cube of 9 is 729
+8 Random integer is 7
+Square of 7 is 49
+Cube of 7 is 343
+9 Random integer is 6
+Cube of 6 is 216
+Square of 6 is 36
+10 Random integer is 2
+Square of 2 is 
