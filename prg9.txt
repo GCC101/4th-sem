@@ -1,0 +1,111 @@
+import java.util.Scanner; 
+class MST
+{
+// Number of vertices in the graph
+private static int Vertices;
+int[][] graph;
+public void ReadFromConsole()
+{ 
+Scanner to_read = new Scanner(System.in);
+System.out.println("Enter number of nodes");
+Vertices= to_read.nextInt();
+graph = new int[Vertices][Vertices] ; // acquiring memory for matrix
+int v = Integer.MAX_VALUE;
+System.out.println("Enter Cost Matrix");
+for(int i=0;i<Vertices;i++)
+for(int j=0;j<Vertices;j++)
+ {
+ graph[i][j] = to_read.nextInt();
+ if (graph[i][j]==0) graph[i][j] = v;
+ }
+to_read.close();
+}
+// A utility function to print the constructed MST stored in
+// parent[]
+void printMST(int parent[], int n)
+{
+int sum=0;
+System.out.println("Edge Weight");
+for (int i = 1; i< Vertices; i++)
+{
+sum = sum + graph[i][parent[i]];
+System.out.println(parent[i]+" - "+ i+" "+ graph[i][parent[i]]);
+}
+System.out.println("Weight of Spanning tree is " + sum); 
+}
+// A utility function to find the vertex with minimum key
+// value, from the set of vertices not yet included in MST
+int minKey(int key[], int mstSet[])
+{
+// Initialize min value
+int min = Integer.MAX_VALUE, min_index=-1;
+for (int v = 0; v < Vertices; v++)
+if (mstSet[v] == 0 && key[v] < min)
+{
+min = key[v];
+min_index = v;
+}
+return min_index;
+}
+void primMST()
+{
+// To represent set of vertices not yet included in MST
+//Boolean mstSet[] = new Boolean[V];
+int mstSet[] = new int[Vertices];
+// Array to store constructed MST
+int parent[] = new int[Vertices];
+ // Key values used to pick minimum weight edge in cut
+int key[] = new int [Vertices];
+// Initialize all keys as INFINITE
+for (int i = 0; i< Vertices; i++)
+{
+key[i] = Integer.MAX_VALUE;
+mstSet[i] = 0;
+}
+// Always include first 1st vertex in MST.
+key[0] = 0; // Make key 0 so that this vertex is
+// picked as first vertex
+parent[0] = -1; // First node is always root of MST
+for (int count = 0; count < Vertices-1; count++)
+{
+// Pick the minimum key vertex from the set of vertices not yet in MST
+int u = minKey(key, mstSet);
+// Add the picked vertex to the MST Set
+mstSet[u] = 1;
+for (int v = 0; v < Vertices; v++)
+if (graph[u][v]!=0 &&mstSet[v] == 0 && graph[u][v] < key[v])
+{
+parent[v] = u;
+key[v] = graph[u][v];
+}
+}
+// print the constructed MST
+printMST(parent, Vertices);
+}
+}
+class Prims
+{
+public static void main(String[] args)
+{
+MST c = new MST();
+c.ReadFromConsole();
+c.primMST();
+}
+}
+Output 1
+Enter number of nodes
+6
+Enter Cost Matrix
+0 3 0 0 6 5 
+3 0 1 0 0 4
+0 1 0 6 0 4
+0 0 6 0 8 5
+6 0 0 8 0 2
+5 4 4 5 2 0
+Edge Weight
+0 - 1 3
+1 - 2 1
+5 - 3 5
+5 - 4 2
+1 - 5 4
+Weight of Spanning tree is 15
