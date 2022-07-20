@@ -1,0 +1,80 @@
+import java.util.Scanner;
+class Stud{
+String USN, Name, Branch, Phone;
+void read()
+{
+ Scanner sc = new Scanner(System.in);
+ System.out.println("Enter the USN: ");
+ USN =sc.next();
+System.out.println("Enter the Name: ");
+Name =sc.next();
+System.out.println("Enter the Branch: ");
+ Branch = sc.next();
+System.out.println("Enter the Phone No.: ");
+Phone =sc.next();
+}
+void display()
+{
+System.out.println("\nStudent details");
+System.out.println("USN = "+this.USN);
+System.out.println("Name = "+this.Name);
+System.out.println("Branch = "+this.Branch);
+System.out.println("Phone = "+this.Phone);
+}
+}
+class Prg1a_inp {
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter the number of students:");
+int nos = sc.nextInt();
+Stud [] s = new Stud[nos];
+for(int i = 0;i<nos;i++)
+{
+System.out.println("Enter the details for student "+(i+1));
+s[i] = new Stud();
+s[i].read();
+}
+System.out.println("The student details are: ");
+for(int i = 0;i<nos;i++)
+{
+System.out.println("Enter the details for student "+(i+1));
+s[i].display();
+}
+sc.close();
+}
+}
+
+OUTPUT:
+Enter the number of students:
+2
+Enter the details for student 1
+Enter the USN: 
+1RN14IS001
+Enter the Name: 
+ABHI
+Enter the Branch: 
+ISE
+Enter the Phone No.: 
+9877568988
+Enter the details for student 2
+Enter the USN: 
+1RN15IS001
+Enter the Name: 
+AKHI
+Enter the Branch: 
+ISE
+Enter the Phone No.: 
+1234567890
+The student details are: 
+Enter the details for student 1
+Student details
+USN = 1RN14IS001
+Name = ABHI
+Branch = ISE
+Phone = 9877568988
+Enter the details for student 2
+Student details
+USN = 1RN15IS001
+Name = AKHI
+Branch = ISE
+Phone = 1234567890
